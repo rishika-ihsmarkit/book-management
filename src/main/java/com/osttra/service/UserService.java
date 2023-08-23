@@ -14,36 +14,48 @@ public class UserService {
 		public void register() {
 			
 			System.out.println("Enter your Username!!");
-			String username = sc.next();
+			String username = sc.nextLine();
 			
 			System.out.println("Enter your Email ID");
-			String emailID = sc.next();
+			String emailID = sc.nextLine();
 			
 			System.out.println("Enter your First Name");
-			String fname = sc.next();
+			String fname = sc.nextLine();
 			
 			System.out.println("Enter your Last Name");
-			String lname = sc.next();
+			String lname = sc.nextLine();
 			
 			System.out.println("Enter your password!!");
-			String password = sc.next();
+			String password = sc.nextLine();
 			
 			System.out.println("Enter your Role!!");
-			String role = sc.next();
+			String role = sc.nextLine();
 			
-			User user = new User(username, emailID, fname, lname, password, role);
+			if(role.equals("admin") || role.equals("customer")) {
+				
+				User user = new User(username, emailID, fname, lname, password, role);
+		
+				userDAO.addUser(user);
+				
+				System.out.println("Registered successfully");
+			}
+			else {
+				
+				System.out.println("Please enter correct role !!");
+				
+			}
 			
-			userDAO.addUser(user);
+			
 			
 		}
 		
 		public User login() {
 					
 				System.out.println("Enter your Username!!");
-				String username = sc.next();
+				String username = sc.nextLine();
 				
 				System.out.println("Enter your password!!");
-				String password = sc.next();
+				String password = sc.nextLine();
 				
 				User user =  userDAO.getUser(username, password);
 				

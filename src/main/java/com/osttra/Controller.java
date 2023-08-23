@@ -9,11 +9,11 @@ import com.osttra.to.User;
 public class Controller {
 	
 	static Scanner sc = new Scanner(System.in);
-	private String role;
+	private User user;
 	
-	public Controller(String role) {
+	public Controller(User user) {
 		super();
-		this.role = role;
+		this.user = user;
 	}
 
 	public void mainmenu() {
@@ -42,10 +42,9 @@ public class Controller {
 				
 			case 2:
 
-				if(role.equals("admin")) {
+				if(user.getRole().equals("admin")) {
 					System.out.println("Adding a book...");
 					bookService.addBook();
-					System.out.println("Book added successfully");
 				}
 				else {
 					System.out.println("Permission denied. Only admins can add books.");
@@ -90,7 +89,6 @@ public class Controller {
 			case 1:
 				System.out.println("Registration ongoing...");
 				userService.register();
-				System.out.println("Registered successfully");
 				break;
 				
 			case 2:
@@ -100,7 +98,7 @@ public class Controller {
 		
 				if( user !=null ) {
 					System.out.println("Login successful");
-					Controller controller = new Controller(user.getRole());
+					Controller controller = new Controller(user);
 					controller.mainmenu();
 				}else{
 					System.out.println("Login failed !!!");

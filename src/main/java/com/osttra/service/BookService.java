@@ -22,7 +22,7 @@ public class BookService {
 
 			for (Book value : books ) {
 				
-				System.out.println(value.getBookid()+" "+value.getBookname()+" "+value.getAuthorName()+" "+value.getDescription());
+				System.out.println(value.getBookid()+" : "+value.getBookname()+" : "+value.getAuthorName()+" : "+value.getDescription());
 				
 			}
 			
@@ -33,13 +33,13 @@ public class BookService {
 	public void addBook() {
 		
 		System.out.println("Enter book name!!");
-		String bookname = sc.next();
+		String bookname = sc.nextLine();
 		
 		System.out.println("Enter author name!!");
-		String authorName = sc.next();
+		String authorName = sc.nextLine();
 		
 		System.out.println("Enter description!!");
-		String description = sc.next();
+		String description = sc.nextLine();
 		
 		System.out.println("Enter book ID!!");
 		int bookid = sc.nextInt();
@@ -48,12 +48,14 @@ public class BookService {
 		
 		bookDAO.insertBook(book);
 		
+		System.out.println("Book added successfully");
+		
 	}
 
 	public void findBook() {
 		
 		System.out.println("Enter book name!!");
-		String bookname = sc.next();
+		String bookname = sc.nextLine();
 		
 		Book book = bookDAO.searchBook(bookname);
 		
@@ -62,7 +64,7 @@ public class BookService {
 		}
 		else {
 				
-			System.out.println(book.getBookid()+" "+book.getBookname()+" "+book.getAuthorName()+" "+book.getDescription());	
+			System.out.println(book.getBookid()+" : "+book.getBookname()+" : "+book.getAuthorName()+" : "+book.getDescription());	
 			
 		}
 		
